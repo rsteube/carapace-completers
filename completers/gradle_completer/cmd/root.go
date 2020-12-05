@@ -131,7 +131,8 @@ func ActionTasks() carapace.Action {
 }
 
 func tasks(checksum string) (tasks []string, err error) {
-	filename := fmt.Sprintf("%v/gradle_completer/%v", os.TempDir(), checksum)
+    // TODO create/use carapace.TempDir() func
+	filename := fmt.Sprintf("%v/carapace/gradle/%v", os.TempDir(), checksum)
 	if tasks, err = loadTasks(filename); err != nil {
 		if tasks, err = parseTasks(); err == nil {
 			err = saveTasks(filename, tasks)
